@@ -2,6 +2,8 @@
 
 一个使用 HTML5 Canvas 和 JavaScript 开发的俄罗斯方块游戏。
 
+🎮 **[在线玩游戏](https://neross666.github.io/AppTools/tetris_game.html)** | 📖 **[部署指南](./DEPLOYMENT.md)**
+
 ## 📁 项目结构
 
 ```
