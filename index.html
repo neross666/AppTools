@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俄罗斯方块游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-wrapper">
+            <div class="game-info">
+                <div class="info-box">
+                    <h3>分数</h3>
+                    <p id="score">0</p>
+                </div>
+                <div class="info-box">
+                    <h3>等级</h3>
+                    <p id="level">1</p>
+                </div>
+                <div class="info-box">
+                    <h3>消除行数</h3>
+                    <p id="lines">0</p>
+                </div>
+            </div>
+            
+            <div class="game-board">
+                <canvas id="gameCanvas" width="200" height="400"></canvas>
+                <div class="next-piece">
+                    <h4>下一个方块</h4>
+                    <canvas id="nextCanvas" width="100" height="100"></canvas>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">开始游戏</button>
+                <button id="pauseBtn" class="btn btn-secondary" disabled>暂停</button>
+                <button id="resetBtn" class="btn btn-secondary">重新开始</button>
+            </div>
+
+            <div class="touch-controls">
+                <div class="touch-row">
+                    <button class="touch-btn" id="rotateBtn">↻ 旋转</button>
+                    <button class="touch-btn" id="dropBtn">↓ 快速下落</button>
+                </div>
+                <div class="touch-row">
+                    <button class="touch-btn" id="leftBtn">← 左移</button>
+                    <button class="touch-btn" id="downBtn">↓ 下移</button>
+                    <button class="touch-btn" id="rightBtn">右移 →</button>
+                </div>
+            </div>
+
+            <div class="game-status" id="gameStatus" style="display: none;">
+                <h2 id="statusTitle">游戏结束</h2>
+                <p id="statusText"></p>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h2>游戏说明</h2>
+            <ul>
+                <li><strong>PC键盘:</strong> ← → 移动 | ↑ 旋转 | ↓ 下移 | 空格 快速下落</li>
+                <li><strong>手机/平板:</strong> 点击按钮控制方块</li>
+                <li><strong>目标:</strong> 填满整行，消除方块获得分数</li>
+                <li><strong>等级:</strong> 每消除10行升一级，游戏速度会加快</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="tetris.js"></script>
+</body>
+</html>
