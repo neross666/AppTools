@@ -101,16 +101,41 @@ class TetrisGame {
         document.getElementById('pauseBtn').addEventListener('click', () => this.togglePause());
         document.getElementById('resetBtn').addEventListener('click', () => this.reset());
 
-        // 触屏控制事件
-        document.getElementById('leftBtn').addEventListener('click', () => this.movePiece(-1, 0));
-        document.getElementById('rightBtn').addEventListener('click', () => this.movePiece(1, 0));
-        document.getElementById('downBtn').addEventListener('click', () => this.movePiece(0, 1));
-        document.getElementById('rotateBtn').addEventListener('click', () => this.rotatePiece());
-        document.getElementById('dropBtn').addEventListener('click', () => this.hardDrop());
+        // 触屏控制事件 - 使用 touchend 和 click 混合以获得最佳兼容性
+        const leftBtn = document.getElementById('leftBtn');
+        const rightBtn = document.getElementById('rightBtn');
+        const downBtn = document.getElementById('downBtn');
+        const rotateBtn = document.getElementById('rotateBtn');
+        const dropBtn = document.getElementById('dropBtn');
 
-        // 禁用长按菜单
+        // 移动按钮
+        const bindButton = (btn, callback) => {
+            btn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                callback();
+            });
+            btn.addEventListener('click', callback);
+        };
+
+        bindButton(leftBtn, () => this.movePiece(-1, 0));
+        bindButton(rightBtn, () => this.movePiece(1, 0));
+        bindButton(downBtn, () => this.movePiece(0, 1));
+        bindButton(rotateBtn, () => this.rotatePiece());
+        bindButton(dropBtn, () => this.hardDrop());
+
+        // 防止长按菜单和文字选择
+        const preventDefaults = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        };
+
         document.querySelectorAll('.touch-btn').forEach(btn => {
-            btn.addEventListener('touchstart', (e) => e.preventDefault());
+            btn.addEventListener('touchstart', preventDefaults);
+            btn.addEventListener('touchmove', preventDefaults);
+            btn.addEventListener('contextmenu', preventDefaults);
+            btn.style.userSelect = 'none';
+            btn.style.WebkitUserSelect = 'none';
+            btn.style.WebkitTouchCallout = 'none';
         });
     }
 

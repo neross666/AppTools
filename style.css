@@ -172,10 +172,12 @@ canvas {
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
     user-select: none;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .touch-btn:active {
@@ -210,37 +212,6 @@ canvas {
 
 .game-status.show {
     display: block !important;
-}
-
-.instructions {
-    background: #f9f9f9;
-    padding: 20px;
-    border-top: 1px solid #e0e0e0;
-}
-
-.instructions h2 {
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
-.instructions ul {
-    list-style: none;
-    padding: 0;
-}
-
-.instructions li {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    position: relative;
-}
-
-.instructions li:before {
-    content: "▸";
-    position: absolute;
-    left: 0;
-    color: #667eea;
 }
 
 /* 响应式设计 */
@@ -282,14 +253,6 @@ canvas {
     #nextCanvas {
         width: 80px;
         height: 80px;
-    }
-
-    .instructions {
-        padding: 15px;
-    }
-
-    .instructions li {
-        font-size: 12px;
     }
 }
 
